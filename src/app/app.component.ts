@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { LocalStorageService } from './services/local-storage.service';
 import { TodoService } from './services/todo.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
+import { TodoComponent } from './pages/todo/todo.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     MatIconModule,
     HttpClientModule,
+    HomeComponent,
+    TodoComponent,
   ],
   providers: [
     TodoService,
@@ -31,22 +35,11 @@ export class AppComponent {
   age = 28;
   user: any;
   localstorageService = inject(LocalStorageService);
-  todoService: TodoService = inject(TodoService);
-  todoList: any;
 
   // constructor(private Is: LocalStorageService){}
 
   constructor() {
     this.handleGetUserData();
-    this.todoService.getTodoList().subscribe({
-      next: (res: any) => {
-        this.todoList = res;
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
-      complete: () => {},
-    }).unsubscribe;
   }
 
   handleCaptionClick(event: string) {
