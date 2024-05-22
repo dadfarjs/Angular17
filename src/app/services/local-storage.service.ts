@@ -3,10 +3,12 @@ import * as CryptoJS from 'crypto-js';
 
 const SECRET_KEY = '9c789cNC9t78v96BHI23n9y82SDkF49028bt7';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LocalStorageService {
   set(key: string, value: unknown) {
-    const enctypted = CryptoJS.AES.enctypt(
+    const enctypted = CryptoJS.AES.encrypt(
       JSON.stringify(value),
       SECRET_KEY
     ).toString();
