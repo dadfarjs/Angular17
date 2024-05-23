@@ -1,0 +1,10 @@
+<header class="bg-slate-200">
+  <topbar-menu
+    (onCaptionClick)="handleCaptionClick($event)"
+    caption="Home page"
+    name="{{ name }}"
+  ></topbar-menu>
+</header>
+<router-outlet />
+
+<footer class="h-10 bg-slate-200">Footer</footer>
