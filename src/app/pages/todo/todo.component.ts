@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -15,6 +15,7 @@ export class TodoComponent {
   todoList: any;
 
   router: Router = inject(Router);
+  activeRoute: ActivatedRoute = inject(ActivatedRoute);
 
   constructor() {
     this.todoService.getTodoList().subscribe({
@@ -26,6 +27,13 @@ export class TodoComponent {
       },
       complete: () => {},
     }).unsubscribe;
+  }
+
+  ngOnInit() {
+    this.activeRoute.queryParams.subscribe((param) => {
+      console.log(param);
+    });
+    console.log(this.activeRoute.snapshot.paramMap.get('id'));
   }
 
   handleNavigateHome() {

@@ -14,7 +14,7 @@ export class HomeComponent {
   handleNavigateTodo() {
     this.router.navigate(['todo'], {
       queryParams: {
-        id: 10,
+        id: 1,
       },
     });
   }
